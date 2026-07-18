@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grove — Iron &amp; Root · Sydney</title>
+    <meta name="description" content="Grove. A bespoke bodybuilding gym, supplement store and apparel brand opening in Inner West Sydney, 2026." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Hidden static form so Netlify's build-time bot can detect and register
+         the "contact" form. The real form in src/pages/Contact.jsx submits to
+         this via fetch. See https://docs.netlify.com/forms/setup/#javascript-rendered-forms -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <select name="subject"><option>General</option></select>
+      <textarea name="message"></textarea>
+    </form>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
