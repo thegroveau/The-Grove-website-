@@ -807,6 +807,34 @@ img {
   margin-bottom: 8px;
 }
 
+.product-card__select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(122, 140, 106, 0.25);
+  border-radius: 0;
+  color: rgba(245, 240, 232, 0.75);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 300;
+  padding: 8px 0;
+  margin-bottom: 12px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color 0.3s ease;
+}
+
+.product-card__select:focus {
+  border-bottom-color: var(--cream);
+}
+
+.product-card__select option {
+  background: var(--earth-deep);
+  color: var(--cream);
+}
+
 .product-card__price {
   color: var(--clay);
   font-size: 15px;

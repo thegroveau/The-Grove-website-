@@ -91,7 +91,9 @@ const COLLECTIONS = [
   },
 ]
 
-const CDN = 'https://www.elitesupps.com.au/cdn/shop/files'
+// Grove Shopify store — cart permalinks go straight to checkout
+const SHOP_URL = 'https://grove-9875.myshopify.com'
+const SHOP_CDN = 'https://cdn.shopify.com/s/files/1/0793/2873/9560/files'
 
 const PRODUCT_CATEGORIES = [
   { key: 'all', label: 'All' },
@@ -101,24 +103,128 @@ const PRODUCT_CATEGORIES = [
   { key: 'optimise', label: 'Optimise' },
 ]
 
+// Variant ids map to Shopify ProductVariant ids in the grove-9875 store
 const PRODUCTS = [
-  { name: 'Pre Shred', category: 'train', detail: 'Pre-workout · 7 flavours', price: '$75.90', rrp: '$79.90', badge: 'Best Seller', mark: 'P', img: `${CDN}/EL_PreShred-BlueCrush_MU-Elite-Supps.png?v=1784246070` },
-  { name: 'Creatine Monohydrate', category: 'train', detail: '100g – 1kg', price: 'From $23.65', rrp: '$24.90', badge: 'Most Popular', mark: 'C', img: `${CDN}/Emrald-Labs-Creatine-Monohydrate-Elite-Supps.png?v=1764727069` },
-  { name: 'Hydration Pro', category: 'train', detail: 'Electrolytes · 3 flavours', price: '$42.70', rrp: '$44.90', mark: 'H', img: `${CDN}/Emrald-Labs-Hydration-Pro-Mango-Passionfruit-Elite-Supps.png?v=1764566952` },
-  { name: '100% Whey Protein', category: 'build', detail: '908g – 4.5kg · 7 flavours', price: 'From $85.45', rrp: '$89.90', mark: 'W', img: `${CDN}/Emrald-Labs-100-Whey-Protein-Chocolate-Milk-908g-Elite-Supps.png?v=1748334519` },
-  { name: 'Protein Water', category: 'build', detail: '500g – 1kg · 5 flavours', price: 'From $56.90', rrp: '$59.90', mark: 'P', img: `${CDN}/Emrald-Labs-Protein-Water-Hawaiian-Punch-500g-Elite-Supps.png?v=1748334519` },
-  { name: 'Vegan Plant Protein', category: 'build', detail: '1kg · 3 flavours', price: '$66.45', rrp: '$69.90', mark: 'V', img: `${CDN}/Emrald-Labs-Vegan-Plant-Protein-Chocolate-1kg-Elite-Supps.png?v=1748334519` },
-  { name: 'Collagen+', category: 'recover', detail: '4 flavours', price: '$52.20', rrp: '$54.90', mark: 'C', img: `${CDN}/Emrald-Labs-Collagen-Plus-Unflavoured-Elite-Supps.png?v=1748334519` },
-  { name: 'Ashwagandha KSM-66', category: 'recover', detail: '60 capsules', price: '$37.95', rrp: '$39.90', mark: 'A', img: `${CDN}/Emrald-Labs-Ashwagandha-KSM66-Elite-Supps.png?v=1748334519` },
-  { name: 'Sea Moss', category: 'recover', detail: '60 capsules', price: '$42.70', rrp: '$44.90', mark: 'S', img: `${CDN}/Emrald-Labs-Sea-Moss-Elite-Supps.png?v=1748334519` },
-  { name: 'Shilajit', category: 'recover', detail: '60 capsules', price: '$47.45', rrp: '$49.90', mark: 'S', img: `${CDN}/Emrald-Labs-Shilajit-Elite-Supps.png?v=1748334519` },
-  { name: 'Maca Root', category: 'recover', detail: '60 capsules', price: '$33.20', rrp: '$34.90', mark: 'M', img: `${CDN}/Emrald-Labs-Maca-Root-Elite-Supps.png?v=1748334519` },
-  { name: 'NAD+', category: 'optimise', detail: '30 capsules', price: '$66.45', rrp: '$69.90', mark: 'N', img: `${CDN}/Emrald-Labs-NAD-Plus-Elite-Supps.png?v=1748334519` },
-  { name: 'NMN', category: 'optimise', detail: '30 capsules', price: '$75.95', rrp: '$79.90', mark: 'N', img: `${CDN}/Emrald-Labs-NMN-Elite-Supps.png?v=1748334519` },
-  { name: 'Tongkat Ali', category: 'optimise', detail: '60 capsules', price: '$52.20', rrp: '$54.90', mark: 'T', img: `${CDN}/Emrald-Labs-Tongkat-Ali-Elite-Supps.png?v=1748334519` },
-  { name: 'Test+', category: 'optimise', detail: '120 capsules', price: '$61.70', rrp: '$64.90', mark: 'T', img: `${CDN}/Emrald-Labs-Test-Plus-Elite-Supps.png?v=1748334519` },
-  { name: 'Berberine', category: 'optimise', detail: '60 capsules', price: '$42.70', rrp: '$44.90', mark: 'B', img: `${CDN}/Emrald-Labs-Berberine-Elite-Supps.png?v=1748334519` },
-  { name: 'NAC', category: 'optimise', detail: '60 capsules', price: '$37.95', rrp: '$39.90', mark: 'N', img: `${CDN}/Emrald-Labs-NAC-Elite-Supps.png?v=1748334519` },
+  {
+    name: 'Pre Shred', category: 'train', detail: 'Pre-workout · 240mg caffeine', badge: 'Best Seller', mark: 'P',
+    img: `${SHOP_CDN}/EL_PreShred-BlueCrush_MU-Elite-Supps.png?v=1784530281`,
+    variants: [
+      { id: '48780267815144', title: 'Blue Crush', price: '75.90', rrp: '79.90' },
+      { id: '48780267847912', title: 'Bubblegum Grape', price: '75.90', rrp: '79.90' },
+      { id: '48780267880680', title: 'Creaming Soda', price: '75.90', rrp: '79.90' },
+      { id: '48780267913448', title: 'Passionfruit', price: '75.90', rrp: '79.90' },
+      { id: '48780267946216', title: 'Watermelon Snow Cone', price: '75.90', rrp: '79.90' },
+      { id: '48780267978984', title: 'Kylla Python', price: '75.90', rrp: '79.90' },
+      { id: '48780268011752', title: 'Pineapple Splice', price: '75.90', rrp: '79.90' },
+    ],
+  },
+  {
+    name: 'Creatine Monohydrate', category: 'train', detail: 'Pharmaceutical grade', badge: 'Most Popular', mark: 'C',
+    variants: [
+      { id: '48780268044520', title: '100g', price: '23.65', rrp: '24.90' },
+      { id: '48780268077288', title: '250g', price: '33.20', rrp: '34.90' },
+      { id: '48780268110056', title: '500g', price: '52.15', rrp: '54.90' },
+      { id: '48780268142824', title: '1kg', price: '85.40', rrp: '89.90' },
+    ],
+  },
+  {
+    name: 'Hydration Pro', category: 'train', detail: 'Electrolytes + minerals', mark: 'H',
+    variants: [
+      { id: '48780268437736', title: 'Mango Passionfruit', price: '42.70', rrp: '44.90' },
+      { id: '48780268470504', title: 'Watermelon', price: '42.70', rrp: '44.90' },
+      { id: '48780268503272', title: 'Unflavoured', price: '42.70', rrp: '44.90' },
+    ],
+  },
+  {
+    name: '100% Whey Protein', category: 'build', detail: 'Pure whey · no fillers', mark: 'W',
+    variants: [
+      { id: '48780268536040', title: 'Chocolate / 908g', price: '85.45', rrp: '89.90' },
+      { id: '48780268568808', title: 'Vanilla / 908g', price: '85.45', rrp: '89.90' },
+      { id: '48780268601576', title: 'Banana Honey Milkshake / 908g', price: '85.45', rrp: '89.90' },
+      { id: '48780268634344', title: 'Gooey White Choc Cookie / 908g', price: '85.45', rrp: '89.90' },
+      { id: '48780268667112', title: 'Cookies and Cream / 908g', price: '85.45', rrp: '89.90' },
+      { id: '48780268699880', title: 'Chocolate / 2.27kg', price: '151.45', rrp: '159.90' },
+      { id: '48780268732648', title: 'Vanilla / 2.27kg', price: '151.45', rrp: '159.90' },
+      { id: '48780268765416', title: 'Cookies and Cream / 2.27kg', price: '151.45', rrp: '159.90' },
+      { id: '48780268798184', title: 'Choc Peanut Butter / 2.27kg', price: '151.45', rrp: '159.90' },
+      { id: '48780268830952', title: 'Gooey White Choc Cookie / 2.27kg', price: '151.45', rrp: '159.90' },
+      { id: '48780268863720', title: 'Chocolate / 4.5kg', price: '284.40', rrp: '299.90' },
+      { id: '48780268896488', title: 'Vanilla / 4.5kg', price: '284.40', rrp: '299.90' },
+    ],
+  },
+  {
+    name: 'Protein Water', category: 'build', detail: 'Light, clear, drinkable', mark: 'P',
+    img: `${SHOP_CDN}/Emrald-Labs-Protein-Water-Hawaiian-Punch-1kg-Elite-Supps.png?v=1784530288`,
+    variants: [
+      { id: '48780268929256', title: 'Hawaiian Punch / 500g', price: '56.90', rrp: '59.90' },
+      { id: '48780268962024', title: 'Tropical Punch / 500g', price: '56.90', rrp: '59.90' },
+      { id: '48780268994792', title: 'Lychee Strawberry / 500g', price: '56.90', rrp: '59.90' },
+      { id: '48780269027560', title: 'Peach Gummy / 500g', price: '56.90', rrp: '59.90' },
+      { id: '48780269060328', title: 'Watermelon Crush / 500g', price: '56.90', rrp: '59.90' },
+      { id: '48780269093096', title: 'Hawaiian Punch / 1kg', price: '94.90', rrp: '99.90' },
+      { id: '48780269125864', title: 'Tropical Punch / 1kg', price: '94.90', rrp: '99.90' },
+      { id: '48780269158632', title: 'Peach Gummy / 1kg', price: '94.90', rrp: '99.90' },
+      { id: '48780269191400', title: 'Watermelon Crush / 1kg', price: '94.90', rrp: '99.90' },
+    ],
+  },
+  {
+    name: 'Vegan Plant Protein', category: 'build', detail: '1kg · plant based', mark: 'V',
+    variants: [
+      { id: '48780269224168', title: 'Chocolate', price: '66.45', rrp: '69.90' },
+      { id: '48780269256936', title: 'Vanilla', price: '66.45', rrp: '69.90' },
+      { id: '48780269289704', title: 'Strawberry', price: '66.45', rrp: '69.90' },
+    ],
+  },
+  {
+    name: 'Collagen+', category: 'recover', detail: 'Joints, tendons, skin', mark: 'C',
+    variants: [
+      { id: '48780269322472', title: 'Unflavoured', price: '52.20', rrp: '54.90' },
+      { id: '48780269355240', title: 'Vanilla', price: '52.20', rrp: '54.90' },
+      { id: '48780269388008', title: 'Chocolate', price: '52.20', rrp: '54.90' },
+      { id: '48780269420776', title: 'Mango', price: '52.20', rrp: '54.90' },
+    ],
+  },
+  {
+    name: 'Ashwagandha KSM-66', category: 'recover', detail: '60 capsules', mark: 'A',
+    variants: [{ id: '48780269453544', title: '60 Capsules', price: '37.95', rrp: '39.90' }],
+  },
+  {
+    name: 'Sea Moss', category: 'recover', detail: '60 capsules', mark: 'S',
+    variants: [{ id: '48780269519080', title: '60 Capsules', price: '42.70', rrp: '44.90' }],
+  },
+  {
+    name: 'Shilajit', category: 'recover', detail: '60 capsules', mark: 'S',
+    variants: [{ id: '48780269551848', title: '60 Capsules', price: '47.45', rrp: '49.90' }],
+  },
+  {
+    name: 'Maca Root', category: 'recover', detail: '60 capsules', mark: 'M',
+    variants: [{ id: '48780269584616', title: '60 Capsules', price: '33.20', rrp: '34.90' }],
+  },
+  {
+    name: 'NAD+', category: 'optimise', detail: '30 capsules', mark: 'N',
+    variants: [{ id: '48780269617384', title: '30 Capsules', price: '66.45', rrp: '69.90' }],
+  },
+  {
+    name: 'NMN', category: 'optimise', detail: '30 capsules', mark: 'N',
+    variants: [{ id: '48780269650152', title: '30 Capsules', price: '75.95', rrp: '79.90' }],
+  },
+  {
+    name: 'Tongkat Ali', category: 'optimise', detail: '60 capsules', mark: 'T',
+    img: `${SHOP_CDN}/Emrald-Labs-Tongkat-Ali-Elite-Supps.png?v=1784530301`,
+    variants: [{ id: '48780269682920', title: '60 Capsules', price: '52.20', rrp: '54.90' }],
+  },
+  {
+    name: 'Test+', category: 'optimise', detail: '120 capsules', mark: 'T',
+    variants: [{ id: '48780269748456', title: '120 Capsules', price: '61.70', rrp: '64.90' }],
+  },
+  {
+    name: 'Berberine', category: 'optimise', detail: '60 capsules', mark: 'B',
+    variants: [{ id: '48780269781224', title: '60 Capsules', price: '42.70', rrp: '44.90' }],
+  },
+  {
+    name: 'NAC', category: 'optimise', detail: '60 capsules', mark: 'N',
+    variants: [{ id: '48780269879528', title: '60 Capsules', price: '37.95', rrp: '39.90' }],
+  },
 ]
 
 const DROP_ITEMS = [
@@ -407,6 +513,61 @@ function AboutStrip() {
   )
 }
 
+function ProductCard({ product: p }) {
+  const [selected, setSelected] = useState(0)
+  const variant = p.variants[selected]
+
+  return (
+    <div className="product-card">
+      <div className="product-card__image">
+        {p.badge && <span className="product-card__badge">{p.badge}</span>}
+        <span className="product-card__mark" aria-hidden="true">
+          {p.mark}
+        </span>
+        {p.img && (
+          <img
+            className="product-card__img"
+            src={p.img}
+            alt={`Emrald Labs ${p.name}`}
+            loading="lazy"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none'
+            }}
+          />
+        )}
+      </div>
+      <p className="product-card__vendor">Emrald Labs</p>
+      <h3 className="product-card__name">{p.name}</h3>
+      <p className="product-card__detail">{p.detail}</p>
+      {p.variants.length > 1 && (
+        <select
+          className="product-card__select"
+          value={selected}
+          onChange={(e) => setSelected(Number(e.target.value))}
+          aria-label={`${p.name} options`}
+        >
+          {p.variants.map((v, i) => (
+            <option key={v.id} value={i}>
+              {v.title}
+            </option>
+          ))}
+        </select>
+      )}
+      <p className="product-card__price">
+        ${variant.price} <span className="product-card__rrp">${variant.rrp}</span>
+      </p>
+      <a
+        href={`${SHOP_URL}/cart/${variant.id}:1`}
+        className="grove-btn grove-btn--primary product-card__cta"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Add to Cart
+      </a>
+    </div>
+  )
+}
+
 function FeaturedProducts() {
   const [category, setCategory] = useState('all')
   const visible = PRODUCTS.filter((p) => category === 'all' || p.category === category)
@@ -440,32 +601,7 @@ function FeaturedProducts() {
             after the IntersectionObserver has already run */}
         <div className="products-grid fade-up">
           {visible.map((p) => (
-            <div key={p.name} className="product-card">
-              <div className="product-card__image">
-                {p.badge && <span className="product-card__badge">{p.badge}</span>}
-                <span className="product-card__mark" aria-hidden="true">
-                  {p.mark}
-                </span>
-                <img
-                  className="product-card__img"
-                  src={p.img}
-                  alt={`Emrald Labs ${p.name}`}
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none'
-                  }}
-                />
-              </div>
-              <p className="product-card__vendor">Emrald Labs</p>
-              <h3 className="product-card__name">{p.name}</h3>
-              <p className="product-card__detail">{p.detail}</p>
-              <p className="product-card__price">
-                {p.price} <span className="product-card__rrp">{p.rrp}</span>
-              </p>
-              <button type="button" className="grove-btn grove-btn--secondary product-card__cta">
-                Notify Me at Launch
-              </button>
-            </div>
+            <ProductCard key={p.name} product={p} />
           ))}
         </div>
       </div>
