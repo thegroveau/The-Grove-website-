@@ -59,37 +59,14 @@ function useCountUp(target, duration = 1500) {
 /* ---------- data ---------- */
 
 const NAV_LINKS = [
-  { label: 'Collections', href: '#collections' },
+  { label: 'Shop', href: '#products' },
   { label: 'About', href: '#about' },
-  { label: 'Membership', href: '#membership' },
+  { label: 'The Gym', href: '#gym' },
   { label: 'Apparel', href: '#apparel' },
   { label: 'Camps', href: '#camps' },
 ]
 
 const MANIFESTO = ['“Earned. Never Given.”', '“Never Give Up.”', '“All or Nothing.”', '“Romans 8:18”']
-
-const COLLECTIONS = [
-  {
-    name: 'Train',
-    description: 'Programming, coaching and the floor itself. Where the work gets done.',
-    tone: 'rgba(61,74,46,0.5)',
-  },
-  {
-    name: 'Fuel',
-    description: 'Supplements with nothing to hide. Full label, full dose, no fillers.',
-    tone: 'rgba(196,168,130,0.35)',
-  },
-  {
-    name: 'Wear',
-    description: 'Apparel built for the grind. Limited drops. No restocks.',
-    tone: 'rgba(122,140,106,0.35)',
-  },
-  {
-    name: 'Community',
-    description: 'Camps, comps and the people who hold the standard with you.',
-    tone: 'rgba(245,240,232,0.12)',
-  },
-]
 
 // Grove Shopify store — cart permalinks go straight to checkout
 const SHOP_URL = 'https://grove-9875.myshopify.com'
@@ -279,7 +256,7 @@ function AnnouncementBar() {
   return (
     <div className="announcement">
       <span>
-        Founding memberships now open — 50 only <span className="announcement__arrow">→</span>
+        The range is live — shipping Australia-wide <span className="announcement__arrow">→</span>
       </span>
     </div>
   )
@@ -317,8 +294,8 @@ function Navigation() {
           ))}
         </div>
         <div className="nav__right">
-          <a href="#pre-register" className="grove-btn grove-btn--moss nav__cta">
-            Pre-Register
+          <a href="#products" className="grove-btn grove-btn--moss nav__cta">
+            Shop Now
           </a>
           <button
             className={`nav__burger ${menuOpen ? 'nav__burger--open' : ''}`}
@@ -345,12 +322,12 @@ function Navigation() {
           </a>
         ))}
         <a
-          href="#pre-register"
+          href="#products"
           className="mobile-menu__link mobile-menu__link--accent"
           style={{ transitionDelay: menuOpen ? `${0.1 + NAV_LINKS.length * 0.07}s` : '0s' }}
           onClick={() => setMenuOpen(false)}
         >
-          Pre-Register
+          Shop Now
         </a>
       </div>
     </>
@@ -382,21 +359,22 @@ function Hero() {
       <div className="hero__bg" ref={bgRef} aria-hidden="true" />
       <div className="hero__glow" aria-hidden="true" />
       <div className="hero__content">
-        <p className="eyebrow fade-up">Inner West Sydney · Opening 2026</p>
+        <p className="eyebrow fade-up">Australian Made · Shipping Now</p>
         <h1 className="hero__wordmark fade-up">GROVE</h1>
         <p className="hero__tagline fade-up">
-          A training ground. A standard. <em>A community.</em>
+          Transparent supplements. <em>No compromise.</em>
         </p>
         <p className="hero__body fade-up">
-          Built by a national champion, for people who take training seriously. Fifty founding
-          memberships. Then the doors close until opening day.
+          Grove starts with what goes in your body — the full Emrald Labs range, Australian made,
+          every dose on the label. The gym opens Inner West Sydney in 2026. The standard starts
+          now.
         </p>
         <div className="hero__actions fade-up">
-          <a href="#pre-register" className="grove-btn grove-btn--primary">
-            Become a Founding Member
+          <a href="#products" className="grove-btn grove-btn--primary">
+            Shop the Range
           </a>
-          <a href="#about" className="grove-btn grove-btn--secondary">
-            Our Story
+          <a href="#gym" className="grove-btn grove-btn--secondary">
+            The Gym — 2026
           </a>
         </div>
       </div>
@@ -421,9 +399,10 @@ function FoundingBanner() {
   const [countRef, count] = useCountUp(SPOTS_CLAIMED)
 
   return (
-    <section className="founding">
+    <section className="founding" id="gym">
       <div className="container founding__inner fade-up">
         <div className="founding__left">
+          <p className="eyebrow">The Gym · Inner West Sydney · Opening 2026</p>
           <span className="founding__badge">Founding 50</span>
           <h2 className="section-heading">
             First in. <em>Forever different.</em>
@@ -446,36 +425,6 @@ function FoundingBanner() {
           <a href="#pre-register" className="grove-btn grove-btn--primary">
             Claim Your Spot
           </a>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function Collections() {
-  return (
-    <section className="section" id="collections">
-      <div className="container">
-        <p className="eyebrow fade-up">What Grove Is</p>
-        <h2 className="section-heading fade-up">
-          Four pillars. <em>One standard.</em>
-        </h2>
-        <div className="collections-grid">
-          {COLLECTIONS.map((c) => (
-            <a
-              key={c.name}
-              href="#pre-register"
-              className="collection-card fade-up"
-              style={{ '--card-tone': c.tone }}
-            >
-              <div className="collection-card__bg" aria-hidden="true" />
-              <h3 className="collection-card__name">{c.name}</h3>
-              <p className="collection-card__desc">{c.description}</p>
-              <span className="collection-card__arrow">
-                <ArrowIcon />
-              </span>
-            </a>
-          ))}
         </div>
       </div>
     </section>
@@ -575,7 +524,7 @@ function FeaturedProducts() {
   return (
     <section className="section" id="products">
       <div className="container">
-        <p className="eyebrow fade-up">The Range · Emrald Labs</p>
+        <p className="eyebrow fade-up">Shop · Emrald Labs</p>
         <h2 className="section-heading fade-up">
           Nothing hidden. <em>Everything dosed.</em>
         </h2>
@@ -633,7 +582,7 @@ function Membership() {
   return (
     <section className="section" id="membership">
       <div className="container">
-        <p className="eyebrow fade-up">Membership</p>
+        <p className="eyebrow fade-up">The Gym · Membership</p>
         <h2 className="section-heading fade-up">
           Two ways in. <em>One is forever.</em>
         </h2>
@@ -707,8 +656,8 @@ function PreRegisterForm() {
           Get in <em>before the doors open.</em>
         </h2>
         <p className="pre-register__copy fade-up">
-          No payment now. Pre-registering holds your place in line for a founding spot and first
-          access to every drop.
+          No payment now. Pre-registering puts you first in line for the gym's founding 50, apparel
+          drops, and camp spots.
         </p>
         {submitted ? (
           <div className="pre-register__success">
@@ -888,11 +837,10 @@ export default function App() {
       <main>
         <Hero />
         <ManifestoStrip />
-        <FoundingBanner />
-        <Collections />
-        <AboutStrip />
         <FeaturedProducts />
         <SocialProofStrip />
+        <AboutStrip />
+        <FoundingBanner />
         <Membership />
         <PreRegisterForm />
         <ApparelDrop />
