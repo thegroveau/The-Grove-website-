@@ -91,11 +91,34 @@ const COLLECTIONS = [
   },
 ]
 
+const CDN = 'https://www.elitesupps.com.au/cdn/shop/files'
+
+const PRODUCT_CATEGORIES = [
+  { key: 'all', label: 'All' },
+  { key: 'train', label: 'Train' },
+  { key: 'build', label: 'Build' },
+  { key: 'recover', label: 'Recover' },
+  { key: 'optimise', label: 'Optimise' },
+]
+
 const PRODUCTS = [
-  { name: 'Grove Whey Isolate', detail: 'Grass-fed · 30 serves', price: '$69', badge: 'Best Seller', mark: 'W' },
-  { name: 'Grove Creatine', detail: 'Monohydrate · 60 serves', price: '$39', badge: null, mark: 'C' },
-  { name: 'Grove Electrolytes', detail: 'Sea salt + magnesium · 40 serves', price: '$45', badge: 'Most Popular', mark: 'E' },
-  { name: 'Grove Pre', detail: 'Full-dose pre-workout · 25 serves', price: '$59', badge: null, mark: 'P' },
+  { name: 'Pre Shred', category: 'train', detail: 'Pre-workout · 7 flavours', price: '$75.90', rrp: '$79.90', badge: 'Best Seller', mark: 'P', img: `${CDN}/EL_PreShred-BlueCrush_MU-Elite-Supps.png?v=1784246070` },
+  { name: 'Creatine Monohydrate', category: 'train', detail: '100g – 1kg', price: 'From $23.65', rrp: '$24.90', badge: 'Most Popular', mark: 'C', img: `${CDN}/Emrald-Labs-Creatine-Monohydrate-Elite-Supps.png?v=1764727069` },
+  { name: 'Hydration Pro', category: 'train', detail: 'Electrolytes · 3 flavours', price: '$42.70', rrp: '$44.90', mark: 'H', img: `${CDN}/Emrald-Labs-Hydration-Pro-Mango-Passionfruit-Elite-Supps.png?v=1764566952` },
+  { name: '100% Whey Protein', category: 'build', detail: '908g – 4.5kg · 7 flavours', price: 'From $85.45', rrp: '$89.90', mark: 'W', img: `${CDN}/Emrald-Labs-100-Whey-Protein-Chocolate-Milk-908g-Elite-Supps.png?v=1748334519` },
+  { name: 'Protein Water', category: 'build', detail: '500g – 1kg · 5 flavours', price: 'From $56.90', rrp: '$59.90', mark: 'P', img: `${CDN}/Emrald-Labs-Protein-Water-Hawaiian-Punch-500g-Elite-Supps.png?v=1748334519` },
+  { name: 'Vegan Plant Protein', category: 'build', detail: '1kg · 3 flavours', price: '$66.45', rrp: '$69.90', mark: 'V', img: `${CDN}/Emrald-Labs-Vegan-Plant-Protein-Chocolate-1kg-Elite-Supps.png?v=1748334519` },
+  { name: 'Collagen+', category: 'recover', detail: '4 flavours', price: '$52.20', rrp: '$54.90', mark: 'C', img: `${CDN}/Emrald-Labs-Collagen-Plus-Unflavoured-Elite-Supps.png?v=1748334519` },
+  { name: 'Ashwagandha KSM-66', category: 'recover', detail: '60 capsules', price: '$37.95', rrp: '$39.90', mark: 'A', img: `${CDN}/Emrald-Labs-Ashwagandha-KSM66-Elite-Supps.png?v=1748334519` },
+  { name: 'Sea Moss', category: 'recover', detail: '60 capsules', price: '$42.70', rrp: '$44.90', mark: 'S', img: `${CDN}/Emrald-Labs-Sea-Moss-Elite-Supps.png?v=1748334519` },
+  { name: 'Shilajit', category: 'recover', detail: '60 capsules', price: '$47.45', rrp: '$49.90', mark: 'S', img: `${CDN}/Emrald-Labs-Shilajit-Elite-Supps.png?v=1748334519` },
+  { name: 'Maca Root', category: 'recover', detail: '60 capsules', price: '$33.20', rrp: '$34.90', mark: 'M', img: `${CDN}/Emrald-Labs-Maca-Root-Elite-Supps.png?v=1748334519` },
+  { name: 'NAD+', category: 'optimise', detail: '30 capsules', price: '$66.45', rrp: '$69.90', mark: 'N', img: `${CDN}/Emrald-Labs-NAD-Plus-Elite-Supps.png?v=1748334519` },
+  { name: 'NMN', category: 'optimise', detail: '30 capsules', price: '$75.95', rrp: '$79.90', mark: 'N', img: `${CDN}/Emrald-Labs-NMN-Elite-Supps.png?v=1748334519` },
+  { name: 'Tongkat Ali', category: 'optimise', detail: '60 capsules', price: '$52.20', rrp: '$54.90', mark: 'T', img: `${CDN}/Emrald-Labs-Tongkat-Ali-Elite-Supps.png?v=1748334519` },
+  { name: 'Test+', category: 'optimise', detail: '120 capsules', price: '$61.70', rrp: '$64.90', mark: 'T', img: `${CDN}/Emrald-Labs-Test-Plus-Elite-Supps.png?v=1748334519` },
+  { name: 'Berberine', category: 'optimise', detail: '60 capsules', price: '$42.70', rrp: '$44.90', mark: 'B', img: `${CDN}/Emrald-Labs-Berberine-Elite-Supps.png?v=1748334519` },
+  { name: 'NAC', category: 'optimise', detail: '60 capsules', price: '$37.95', rrp: '$39.90', mark: 'N', img: `${CDN}/Emrald-Labs-NAC-Elite-Supps.png?v=1748334519` },
 ]
 
 const DROP_ITEMS = [
@@ -385,25 +408,60 @@ function AboutStrip() {
 }
 
 function FeaturedProducts() {
+  const [category, setCategory] = useState('all')
+  const visible = PRODUCTS.filter((p) => category === 'all' || p.category === category)
+
   return (
     <section className="section" id="products">
       <div className="container">
-        <p className="eyebrow fade-up">Fuel</p>
+        <p className="eyebrow fade-up">The Range · Emrald Labs</p>
         <h2 className="section-heading fade-up">
           Nothing hidden. <em>Everything dosed.</em>
         </h2>
-        <div className="products-grid">
-          {PRODUCTS.map((p) => (
-            <div key={p.name} className="product-card fade-up">
+        <p className="products-intro fade-up">
+          Australian made, transparently labelled. Every ingredient listed, every dose disclosed —
+          the only standard we'll stock.
+        </p>
+        <div className="range-tabs fade-up" role="tablist" aria-label="Product categories">
+          {PRODUCT_CATEGORIES.map((c) => (
+            <button
+              key={c.key}
+              type="button"
+              role="tab"
+              aria-selected={category === c.key}
+              className={`range-tab ${category === c.key ? 'range-tab--active' : ''}`}
+              onClick={() => setCategory(c.key)}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+        {/* fade-up sits on the wrapper, not the cards — filtered cards re-render
+            after the IntersectionObserver has already run */}
+        <div className="products-grid fade-up">
+          {visible.map((p) => (
+            <div key={p.name} className="product-card">
               <div className="product-card__image">
                 {p.badge && <span className="product-card__badge">{p.badge}</span>}
                 <span className="product-card__mark" aria-hidden="true">
                   {p.mark}
                 </span>
+                <img
+                  className="product-card__img"
+                  src={p.img}
+                  alt={`Emrald Labs ${p.name}`}
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none'
+                  }}
+                />
               </div>
+              <p className="product-card__vendor">Emrald Labs</p>
               <h3 className="product-card__name">{p.name}</h3>
               <p className="product-card__detail">{p.detail}</p>
-              <p className="product-card__price">{p.price}</p>
+              <p className="product-card__price">
+                {p.price} <span className="product-card__rrp">{p.rrp}</span>
+              </p>
               <button type="button" className="grove-btn grove-btn--secondary product-card__cta">
                 Notify Me at Launch
               </button>
