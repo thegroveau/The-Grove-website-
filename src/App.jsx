@@ -433,7 +433,7 @@ function FoundingBanner() {
 
 function AboutStrip() {
   return (
-    <section className="section about" id="about">
+    <section className="section section--light about" id="about">
       <div className="container about__inner">
         <div className="about__image fade-up" aria-hidden="true">
           <span className="about__image-mark">JT</span>
@@ -522,7 +522,7 @@ function FeaturedProducts() {
   const visible = PRODUCTS.filter((p) => category === 'all' || p.category === category)
 
   return (
-    <section className="section" id="products">
+    <section className="section section--light" id="products">
       <div className="container">
         <p className="eyebrow fade-up">Shop · Emrald Labs</p>
         <h2 className="section-heading fade-up">
@@ -560,7 +560,7 @@ function FeaturedProducts() {
 
 function SocialProofStrip() {
   return (
-    <div className="social-proof fade-up">
+    <div className="social-proof section--light fade-up">
       <span>🏆 Australian National Champion</span>
       <span className="social-proof__dot" aria-hidden="true">
         ·
@@ -649,7 +649,7 @@ function PreRegisterForm() {
   }
 
   return (
-    <section className="section pre-register" id="pre-register">
+    <section className="section section--light pre-register" id="pre-register">
       <div className="container pre-register__inner">
         <p className="eyebrow fade-up">Pre-Register</p>
         <h2 className="section-heading fade-up">
