@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Gym — GROVE</title>
+<meta name="description" content="The Grove Gym is coming. A training home built on purpose, commitment, and turning up. Join the founding members waitlist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="grove.css">
+<style>
+  .signup{background:var(--card);border:2px solid var(--gold);border-radius:12px;padding:32px 28px;max-width:560px;margin-top:30px}
+  .signup h3{font-size:12px;letter-spacing:.3em;color:var(--gold);font-weight:600;margin-bottom:6px;text-transform:uppercase}
+  .signup .voice{font-size:22px;display:block;margin-bottom:18px}
+  .field{margin-bottom:14px}
+  .field input{width:100%;padding:14px 16px;border:1px solid var(--faint);border-radius:8px;
+    background:#fff;font-family:inherit;font-size:15px;color:var(--ink)}
+  .field input:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+  .signup .btn{width:100%;border:none;cursor:pointer;font-family:inherit;font-weight:500}
+  .signup .fine{margin-top:12px}
+  #msg{margin-top:14px;font-size:15px;display:none}
+  #msg.ok{display:block;color:var(--gold);font-weight:500}
+  #msg.err{display:block;color:#8B3232}
+  .perk{display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px}
+  .perk:last-of-type{border-bottom:none}
+  .perk .n{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:19px;min-width:34px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="index.html">GROVE</a>
+    <nav aria-label="Primary">
+      <a href="index.html">HOME</a>
+      <a href="philosophy.html">PHILOSOPHY</a>
+      <a href="shop.html">SHOP</a>
+      <a href="prep-programs.html">PREP PROGRAMS</a>
+      <a href="gym.html" class="active">THE GYM</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow">THE GROVE GYM — COMING</p>
+    <h1>The philosophy is getting a postcode.<span class="voice">A training home for the ones who turn up.</span></h1>
+    <p class="lede">Grove started as a belief: all training is hypertrophy, turning up is the talent, and commitment changes lives. The stacks were the first proof. The gym is the next — a place built for purpose-driven training, not mirrors and machines you queue for.</p>
+    <p class="sig">TRAIN WITH PURPOSE. UNDER ONE ROOF.</p>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="kicker">WHAT IT WILL BE</p>
+      <h2>Built around the loop, not the equipment list.</h2>
+      <div class="grid">
+        <div class="cell"><h3>Train</h3><p>Strength floor, engine room, and Hyrox-style stations — programmed blocks, not aimless sessions.</p></div>
+        <div class="cell"><h3>Build</h3><p>Grove stacks on the shelf and in your program — supplementation matched to the training you're actually doing.</p></div>
+        <div class="cell"><h3>Recover</h3><p>Recovery treated as training, not reward — because growth happens when nobody's watching.</p></div>
+        <div class="cell"><h3>Belong</h3><p>A room full of people who made the same promise you did: never give up during the process.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="kicker">FOUNDING MEMBERS</p>
+      <h2>The first ones through the door get the most.</h2>
+      <p class="body">Founding membership will be limited, and the waitlist decides who gets the call first. Joining costs nothing and commits you to nothing — it just puts your name where it counts.</p>
+      <div style="max-width:640px;margin-top:10px">
+        <div class="perk"><span class="n">01</span><span>First access to founding memberships before public release</span></div>
+        <div class="perk"><span class="n">02</span><span>Locked founding rate — the price never goes up while you stay</span></div>
+        <div class="perk"><span class="n">03</span><span>Founding member pricing on Grove stacks and prep programs</span></div>
+        <div class="perk"><span class="n">04</span><span>A say in what gets built — equipment, classes, hours</span></div>
+      </div>
+
+      <div class="signup">
+        <h3>THE WAITLIST</h3>
+        <span class="voice">Turning up starts here.</span>
+        <div class="field"><input type="text" id="fname" placeholder="First name" autocomplete="given-name"></div>
+        <div class="field"><input type="email" id="email" placeholder="Email" autocomplete="email" required></div>
+        <button class="btn" id="join" type="button">JOIN THE FOUNDING LIST</button>
+        <p id="msg"></p>
+        <p class="fine">No spam, no lock-in. Just first access when the doors are ready.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block story">
+    <div class="wrap">
+      <p class="kicker">WHY A GYM</p>
+      <h2>Because a supplement can fuel the work.<br>Only a room can hold it.</h2>
+      <p class="body">Training gave our founder a life — <em class="voice" style="font-size:17px">an earned one</em> — and the mission has always been bigger than product: we want everyone to find what training gives, in whatever version it means for them. Some people find it alone at 5am. Most find it easier in a room where turning up is the culture. That's the gym. That's what's coming.</p>
+      <p class="body"><em class="voice" style="font-size:20px">From nothing, to something, to everything — now with an address.</em></p>
+    </div>
+  </section>
+
+  <section class="close-block wrap">
+    <h2>Be there before the doors are.</h2>
+    <span class="voice">Founding members are decided now, not on opening day.</span>
+    <div class="cta-row" style="justify-content:center"><a class="btn" href="#" onclick="document.getElementById('email').focus();return false">JOIN THE WAITLIST</a></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">GROVE — Australian made, transparently labelled. Nothing hidden. Everything dosed.</div>
+</footer>
+
+<script>
+document.getElementById('join').addEventListener('click', async () => {
+  const email = document.getElementById('email').value.trim();
+  const fname = document.getElementById('fname').value.trim();
+  const msg = document.getElementById('msg');
+  msg.className = '';
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    msg.textContent = 'Enter a valid email to join.'; msg.className = 'err'; return;
+  }
+  try {
+    const res = await fetch('https://a.klaviyo.com/client/subscriptions/?company_id=Y976FB', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'revision': '2024-10-15' },
+      body: JSON.stringify({
+        data: {
+          type: 'subscription',
+          attributes: {
+            custom_source: 'Gym Founding Waitlist',
+            profile: { data: { type: 'profile', attributes: {
+              email: email,
+              first_name: fname || undefined,
+              properties: { gym_waitlist: true, source_page: 'gym.html' }
+            } } }
+          },
+          relationships: { list: { data: { type: 'list', id: 'QP7yri' } } }
+        }
+      })
+    });
+    if (res.ok || res.status === 202) {
+      msg.textContent = (fname ? fname + ', you' : 'You') + "'re on the founding list. We'll be in touch before anyone else hears about it.";
+      msg.className = 'ok';
+      document.getElementById('join').textContent = 'YOU\u2019RE ON THE LIST';
+    } else { throw new Error('bad status ' + res.status); }
+  } catch (e) {
+    msg.textContent = 'Something went wrong — email hello@thegroveau.com and we\u2019ll add you personally.';
+    msg.className = 'err';
+  }
+});
+</script>
+</body>
+</html>
