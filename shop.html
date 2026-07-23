@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop — GROVE</title>
+<meta name="description" content="Australian-made supplements, transparently dosed. Shop stacks and singles by training goal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="grove.css">
+<style>
+  .filters{display:flex;gap:10px;flex-wrap:wrap;padding:8px 0 4px}
+  .filter{font-size:12.5px;letter-spacing:.14em;padding:9px 18px;border:1px solid var(--faint);
+    border-radius:999px;background:none;color:var(--muted);cursor:pointer;font-family:inherit}
+  .filter[aria-pressed="true"]{background:#141414;color:var(--cream);border-color:#141414}
+  .filter:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+  .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin:28px 0 64px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    display:flex;flex-direction:column;transition:transform .15s}
+  .card:hover{transform:translateY(-2px)}
+  .card.stack{border:2px solid var(--gold)}
+  .thumb{aspect-ratio:1/1;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .thumb img{width:100%;height:100%;object-fit:contain;padding:14px}
+  .thumb .mono{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:76px;color:#EDE7D8;line-height:1}
+  .thumb.dark{background:#141414}
+  .thumb.dark .mono{color:#2B2B2B}
+  .card-body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1}
+  .card .tagline{font-size:10.5px;letter-spacing:.24em;color:var(--gold);margin-bottom:6px;text-transform:uppercase}
+  .card h3{font-size:15.5px;font-weight:600;line-height:1.3;text-transform:none;flex:0}
+  .card .contents{font-size:12.5px;color:var(--faint);margin-top:5px;line-height:1.45}
+  .card .price-row{margin-top:auto;padding-top:14px;font-size:17px;font-weight:600}
+  .card .price-row s{font-size:13px;color:var(--faint);font-weight:400;margin-left:7px}
+  .card .add{margin-top:10px;display:block;text-align:center;background:#141414;color:var(--cream);
+    padding:12px;border-radius:8px;font-size:12px;letter-spacing:.16em}
+  .card .add:hover{opacity:.85}
+  .shop-note{font-size:13.5px;color:var(--faint);max-width:640px;margin-top:10px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="index.html">GROVE</a>
+    <nav aria-label="Primary">
+      <a href="index.html">HOME</a>
+      <a href="philosophy.html">PHILOSOPHY</a>
+      <a href="shop.html" class="active">SHOP</a>
+      <a href="prep-programs.html">PREP PROGRAMS</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero" style="padding-bottom:24px">
+    <p class="eyebrow">THE SHOP</p>
+    <h1>Every product serves the loop.<span class="voice">Train. Build. Recover. Optimise.</span></h1>
+    <p class="lede">Australian made, every dose disclosed. Start with a stack built for your sport, or build your own from the fundamentals.</p>
+  </section>
+
+  <div class="filters" role="group" aria-label="Filter products">
+    <button class="filter" aria-pressed="true" data-filter="all">ALL</button>
+    <button class="filter" aria-pressed="false" data-filter="bundle">STACKS</button>
+    <button class="filter" aria-pressed="false" data-filter="train">TRAIN</button>
+    <button class="filter" aria-pressed="false" data-filter="build">BUILD</button>
+    <button class="filter" aria-pressed="false" data-filter="recover">RECOVER</button>
+    <button class="filter" aria-pressed="false" data-filter="optimise">OPTIMISE</button>
+  </div>
+  <p class="shop-note">Buying 3+ singles from one stack? Use <strong>HYROX20</strong>, <strong>BUILD20</strong> or <strong>RECOVER20</strong> at checkout for 20% off — or let a stack do it for you.</p>
+
+  <div class="products" id="grid"></div>
+</main>
+
+<footer>
+  <div class="wrap">GROVE — Australian made, transparently labelled. Nothing hidden. Everything dosed.</div>
+</footer>
+
+<script>
+const CART = "https://grove-9875.myshopify.com/cart/";
+const PRODUCTS = [
+  {t:"Hyrox Essentials Bundle", tag:"Race prep · 4 supps", c:"Hydration · Creatine · Pre Shred · Whey", v:"48792579997928", p:199.00, cp:237.25, tags:["bundle","train","hyrox"]},
+  {t:"Hyrox Pro Bundle", tag:"Race prep · Complete", c:"Essentials + Collagen+ · more coming", v:"48792580161768", p:239.00, cp:289.45, tags:["bundle","train","hyrox"]},
+  {t:"Bodybuilding Essentials Bundle", tag:"Muscle · 3 supps", c:"Whey · Creatine · Pre Shred", v:"48792580653288", p:165.00, cp:194.55, tags:["bundle","build","bodybuilding"]},
+  {t:"Bodybuilding Pro Bundle", tag:"Muscle · Complete", c:"Essentials + Test+ · Ashwagandha", v:"48792582291688", p:245.00, cp:294.20, tags:["bundle","build","bodybuilding"]},
+  {t:"Recovery Essentials Bundle", tag:"Recovery · 4 supps", c:"NAC · Sea Moss · Shilajit · Collagen+", v:"48792582357224", p:155.00, cp:180.30, tags:["bundle","recover","recovery"]},
+  {t:"Recovery Pro Bundle", tag:"Recovery · Complete", c:"Essentials + NMN", v:"48792583012584", p:215.00, cp:256.25, tags:["bundle","recover","recovery"]},
+  {t:"Pre Shred", tag:"Pre-workout", v:"48780267815144", p:75.90, cp:79.90, tags:["train"], img:"https://cdn.shopify.com/s/files/1/0793/2873/9560/files/EL_PreShred-BlueCrush_MU-Elite-Supps.png?v=1784530281"},
+  {t:"Creatine Monohydrate", tag:"Strength", v:"48780268044520", p:23.65, cp:24.90, tags:["train"]},
+  {t:"Hydration Pro", tag:"Electrolytes", v:"48780268437736", p:42.70, cp:44.90, tags:["train"]},
+  {t:"100% Whey Protein", tag:"Protein", v:"48780268536040", p:85.45, cp:89.90, tags:["build"]},
+  {t:"Protein Water", tag:"Protein", v:"48780268929256", p:56.90, cp:59.90, tags:["build"], img:"https://cdn.shopify.com/s/files/1/0793/2873/9560/files/Emrald-Labs-Protein-Water-Hawaiian-Punch-1kg-Elite-Supps.png?v=1784530288"},
+  {t:"Vegan Plant Protein", tag:"Plant protein", v:"48780269224168", p:66.45, cp:69.90, tags:["build"]},
+  {t:"Collagen+", tag:"Joints & tendons", v:"48780269322472", p:52.20, cp:54.90, tags:["recover"]},
+  {t:"Ashwagandha KSM-66", tag:"Stress & recovery", v:"48780269453544", p:37.95, cp:39.90, tags:["recover"]},
+  {t:"Sea Moss", tag:"92 trace minerals", v:"48780269519080", p:42.70, cp:44.90, tags:["recover"]},
+  {t:"Shilajit", tag:"Performance minerals", v:"48780269551848", p:47.45, cp:49.90, tags:["recover"]},
+  {t:"Maca Root", tag:"Adaptogen", v:"48780269584616", p:33.20, cp:34.90, tags:["recover"]},
+  {t:"NAD+", tag:"Cellular energy", v:"48780269617384", p:66.45, cp:69.90, tags:["optimise"]},
+  {t:"NMN", tag:"Longevity", v:"48780269650152", p:75.95, cp:79.90, tags:["optimise"]},
+  {t:"Tongkat Ali", tag:"Hormone support", v:"48780269682920", p:52.20, cp:54.90, tags:["optimise"], img:"https://cdn.shopify.com/s/files/1/0793/2873/9560/files/Emrald-Labs-Tongkat-Ali-Elite-Supps.png?v=1784530301"},
+  {t:"Test+", tag:"Testosterone support", v:"48780269748456", p:61.70, cp:64.90, tags:["optimise"]},
+  {t:"Berberine", tag:"Metabolic support", v:"48780269781224", p:42.70, cp:44.90, tags:["optimise"]},
+  {t:"NAC", tag:"Antioxidant & liver", v:"48780269879528", p:37.95, cp:39.90, tags:["optimise","recover"], img:"https://cdn.shopify.com/s/files/1/0793/2873/9560/files/Emrald-Labs-NAC-90-Capsules-Elite-Supps.webp?v=1784535888"}
+];
+
+const grid = document.getElementById("grid");
+const fmt = n => "$" + n.toFixed(2).replace(/\.00$/,"");
+
+function render(filter){
+  grid.innerHTML = "";
+  PRODUCTS.filter(p => filter === "all" || p.tags.includes(filter)).forEach(p => {
+    const isStack = p.tags.includes("bundle");
+    const card = document.createElement("div");
+    card.className = "card" + (isStack ? " stack" : "");
+    const thumb = p.img
+      ? `<div class="thumb"><img src="${p.img}" alt="${p.t}" loading="lazy"></div>`
+      : `<div class="thumb${isStack ? " dark" : ""}"><span class="mono">${p.t.charAt(0)}</span></div>`;
+    card.innerHTML = `${thumb}
+      <div class="card-body">
+        <p class="tagline">${p.tag}</p>
+        <h3>${p.t}</h3>
+        ${p.c ? `<p class="contents">${p.c}</p>` : ""}
+        <p class="price-row">${fmt(p.p)} <s>${fmt(p.cp)}</s></p>
+        <a class="add" href="${CART}${p.v}:1">ADD TO CART</a>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+const buttons = document.querySelectorAll(".filter");
+buttons.forEach(b => b.addEventListener("click", () => {
+  buttons.forEach(x => x.setAttribute("aria-pressed","false"));
+  b.setAttribute("aria-pressed","true");
+  render(b.dataset.filter);
+}));
+
+const param = new URLSearchParams(location.search).get("filter");
+const initial = [...buttons].find(b => b.dataset.filter === param);
+if (initial){ initial.click(); } else { render("all"); }
+</script>
+</body>
+</html>
