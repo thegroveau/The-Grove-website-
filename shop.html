@@ -36,6 +36,14 @@
     padding:12px;border-radius:8px;font-size:12px;letter-spacing:.16em}
   .card .add:hover{opacity:.85}
   .shop-note{font-size:13.5px;color:var(--faint);max-width:640px;margin-top:10px}
+
+  .thumb.multi{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff}
+  .thumb.multi img{width:100%;height:100%;object-fit:contain;padding:8px}
+  .thumb.multi.three img:first-child{grid-column:1/-1}
+  .inside{list-style:none;margin:8px 0 0;padding:0}
+  .inside li{font-size:12.5px;color:var(--muted);padding:4px 0;border-bottom:1px solid #EFEADC;display:flex;gap:8px;align-items:baseline}
+  .inside li:last-child{border-bottom:none}
+  .inside li::before{content:"+";color:var(--gold);font-weight:600}
 </style>
 </head>
 <body>
@@ -79,13 +87,27 @@
 
 <script>
 const CART = "https://grove-9875.myshopify.com/cart/";
+const B = "https://cdn.shopify.com/s/files/1/0793/2873/9560/files/";
+const I = {
+  whey: B+"EmraldLabs-100_Whey-909-Cereal-Elite-Supps_d72fe5f6-1bce-42da-a777-b03175a2af52.png?v=1784779965",
+  creatine: B+"Emrald-Labs-Ceatine-Monohydrate-100g-Elite-Supps.png?v=1784779962",
+  preshred: B+"EL_PreShred-BlueCrush_MU-Elite-Supps.png?v=1784530281",
+  hydration: B+"Emrald-Labs-Hydration-Pro-350g-Mango-Passionfruit-Elite-Supps.png?v=1784779963",
+  collagen: B+"EmraldLabs-Collagen-Choc-30-Elite-Supps.png?v=1784779963",
+  nac: B+"Emrald-Labs-NAC-90-Capsules-Elite-Supps.webp?v=1784535888",
+  seamoss: B+"Emrald-Labs-Sea-Moss-40serves-Elite-Supps.png?v=1784779965",
+  shilajit: B+"Emrald-Labs-SHilajit-Caps-Elite-Supps.png?v=1784779965",
+  nmn: B+"Emrald-Labs-NMN-60-Capsules-Elite-Supps.png?v=1784779965",
+  test: B+"Emrald-Labs-Test-120-Casules-Elite-Supps.png?v=1784779966",
+  ashwa: B+"Emrald-Labs-Ashwagandha-KSM-66-90-Capsules-Elite-Supps.png?v=1784779964"
+};
 const PRODUCTS = [
-  {t:"Hyrox Essentials Bundle", tag:"Race prep · 4 supps", c:"Hydration · Creatine · Pre Shred · Whey", v:"48792579997928", p:199.00, cp:237.25, tags:["bundle","train","hyrox"]},
-  {t:"Hyrox Pro Bundle", tag:"Race prep · Complete", c:"Essentials + Collagen+ · more coming", v:"48792580161768", p:239.00, cp:289.45, tags:["bundle","train","hyrox"]},
-  {t:"Bodybuilding Essentials Bundle", tag:"Muscle · 3 supps", c:"Whey · Creatine · Pre Shred", v:"48792580653288", p:165.00, cp:194.55, tags:["bundle","build","bodybuilding"]},
-  {t:"Bodybuilding Pro Bundle", tag:"Muscle · Complete", c:"Essentials + Test+ · Ashwagandha", v:"48792582291688", p:245.00, cp:294.20, tags:["bundle","build","bodybuilding"]},
-  {t:"Recovery Essentials Bundle", tag:"Recovery · 4 supps", c:"NAC · Sea Moss · Shilajit · Collagen+", v:"48792582357224", p:155.00, cp:180.30, tags:["bundle","recover","recovery"]},
-  {t:"Recovery Pro Bundle", tag:"Recovery · Complete", c:"Essentials + NMN", v:"48792583012584", p:215.00, cp:256.25, tags:["bundle","recover","recovery"]},
+  {t:"Hyrox Essentials Bundle", tag:"Race prep · 4 supps", items:["Hydration Pro electrolytes","Creatine Monohydrate","Pre Shred pre-workout","100% Whey Protein"], imgs:[I.hydration,I.creatine,I.preshred,I.whey], v:"48792579997928", p:199.00, cp:237.25, tags:["bundle","train","hyrox"]},
+  {t:"Hyrox Pro Bundle", tag:"Race prep · 5 supps", items:["Everything in Essentials","Collagen+ joints & tendons"], imgs:[I.hydration,I.preshred,I.whey,I.collagen], v:"48792580161768", p:239.00, cp:289.45, tags:["bundle","train","hyrox"]},
+  {t:"Bodybuilding Essentials Bundle", tag:"Muscle · 3 supps", items:["100% Whey Protein","Creatine Monohydrate","Pre Shred pre-workout"], imgs:[I.whey,I.creatine,I.preshred], v:"48792580653288", p:165.00, cp:194.55, tags:["bundle","build","bodybuilding"]},
+  {t:"Bodybuilding Pro Bundle", tag:"Muscle · 5 supps", items:["Everything in Essentials","Test+ testosterone support","Ashwagandha KSM-66"], imgs:[I.whey,I.preshred,I.test,I.ashwa], v:"48792582291688", p:245.00, cp:294.20, tags:["bundle","build","bodybuilding"]},
+  {t:"Recovery Essentials Bundle", tag:"Recovery · 4 supps", items:["NAC antioxidant support","Sea Moss — 92 minerals","Shilajit","Collagen+"], imgs:[I.nac,I.seamoss,I.shilajit,I.collagen], v:"48792582357224", p:155.00, cp:180.30, tags:["bundle","recover","recovery"]},
+  {t:"Recovery Pro Bundle", tag:"Recovery · 5 supps", items:["Everything in Essentials","NMN cellular energy"], imgs:[I.seamoss,I.shilajit,I.collagen,I.nmn], v:"48792583012584", p:215.00, cp:256.25, tags:["bundle","recover","recovery"]},
   {t:"Pre Shred", tag:"Pre-workout", v:"48780267815144", p:75.90, cp:79.90, tags:["train"], img:"https://cdn.shopify.com/s/files/1/0793/2873/9560/files/EL_PreShred-BlueCrush_MU-Elite-Supps.png?v=1784530281"},
   {t:"Creatine Monohydrate", tag:"Strength", v:"48780268044520", p:23.65, cp:24.90, img:"https://cdn.shopify.com/s/files/1/0793/2873/9560/files/Emrald-Labs-Ceatine-Monohydrate-100g-Elite-Supps.png?v=1784779962", tags:["train"]},
   {t:"Hydration Pro", tag:"Electrolytes", v:"48780268437736", p:42.70, cp:44.90, img:"https://cdn.shopify.com/s/files/1/0793/2873/9560/files/Emrald-Labs-Hydration-Pro-350g-Mango-Passionfruit-Elite-Supps.png?v=1784779963", tags:["train"]},
@@ -124,14 +146,20 @@ function render(filter){
     const isStack = p.tags.includes("bundle");
     const card = document.createElement("div");
     card.className = "card" + (isStack ? " stack" : "");
-    const thumb = p.img
-      ? `<div class="thumb"><img src="${p.img}" alt="${p.t}" loading="lazy"></div>`
-      : `<div class="thumb${isStack ? " dark" : ""}"><span class="mono">${p.t.charAt(0)}</span></div>`;
+    let thumb;
+    if (p.imgs) {
+      thumb = `<div class="thumb multi${p.imgs.length === 3 ? " three" : ""}">` +
+        p.imgs.map(u => `<img src="${u}" alt="" loading="lazy">`).join("") + `</div>`;
+    } else if (p.img) {
+      thumb = `<div class="thumb"><img src="${p.img}" alt="${p.t}" loading="lazy"></div>`;
+    } else {
+      thumb = `<div class="thumb${isStack ? " dark" : ""}"><span class="mono">${p.t.charAt(0)}</span></div>`;
+    }
     card.innerHTML = `${thumb}
       <div class="card-body">
         <p class="tagline">${p.tag}</p>
         <h3>${p.t}</h3>
-        ${p.c ? `<p class="contents">${p.c}</p>` : ""}
+        ${p.items ? `<ul class="inside">` + p.items.map(i => `<li>${i}</li>`).join("") + `</ul>` : (p.c ? `<p class="contents">${p.c}</p>` : "")}
         <p class="price-row">${fmt(p.p)} <s>${fmt(p.cp)}</s></p>
         <a class="add" href="${CART}${p.v}:1">ADD TO CART</a>
       </div>`;
