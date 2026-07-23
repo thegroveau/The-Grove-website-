@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prep Programs — GROVE</title>
+<meta name="description" content="Sport-specific supplement stacks in 6, 10 and 12-week prep programs. Nothing hidden. Everything dosed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F2EDE3; --card:#FBF8F1; --ink:#1B1B1B; --gold:#8B7332;
+    --muted:#55503F; --faint:#9A9077; --line:#D8D0BF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  header{background:#141414;padding:18px 0}
+  header .wrap{display:flex;justify-content:space-between;align-items:center}
+  .wordmark{color:var(--cream);letter-spacing:.5em;font-weight:500;font-size:17px}
+  header nav{display:flex;flex-wrap:wrap;gap:4px 22px;justify-content:flex-end}
+  header nav a{color:var(--cream);font-size:12.5px;letter-spacing:.15em;opacity:.85}
+  header nav a:hover{opacity:1}
+
+  .hero{padding:72px 0 32px}
+  .eyebrow{font-size:12px;letter-spacing:.3em;color:var(--gold);margin-bottom:16px}
+  h1{font-size:clamp(30px,5vw,48px);font-weight:600;line-height:1.15;text-transform:uppercase}
+  .hero .voice{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+    font-size:clamp(28px,4.6vw,44px);color:var(--gold);display:block;text-transform:none}
+  .hero p{max-width:540px;margin-top:20px;color:var(--muted);font-size:17px}
+
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;padding:28px 0 8px}
+  .tab{font-size:13px;letter-spacing:.12em;padding:9px 20px;border:1px solid var(--faint);
+    border-radius:999px;background:none;color:var(--muted);cursor:pointer;font-family:inherit}
+  .tab[aria-selected="true"]{background:#141414;color:var(--cream);border-color:#141414}
+  .tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+  .sport{display:none;padding:24px 0 8px}
+  .sport.active{display:block}
+  .tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+  .tier{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 24px;
+    display:flex;flex-direction:column}
+  .tier.featured{border:2px solid var(--gold)}
+  .tier .label{font-size:11px;letter-spacing:.28em;color:var(--gold);margin-bottom:12px}
+  .price{font-size:30px;font-weight:600}
+  .price s{font-size:15px;color:var(--faint);font-weight:400;margin-left:8px}
+  .tier ul{list-style:none;margin:16px 0 22px;flex:1}
+  .tier li{padding:7px 0;border-bottom:1px solid #E9E3D3;font-size:15px;color:var(--muted)}
+  .tier li:last-child{border-bottom:none}
+  .tier li.soon{color:var(--faint);font-style:italic}
+  .buy{display:block;text-align:center;background:#141414;color:var(--cream);padding:15px;
+    border-radius:8px;font-size:13px;letter-spacing:.18em;transition:opacity .15s}
+  .buy:hover{opacity:.85}
+
+  .programs{margin:56px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:32px 28px}
+  .programs h2{font-size:12px;letter-spacing:.3em;color:var(--gold);font-weight:500;margin-bottom:6px}
+  .programs .voice{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:var(--ink)}
+  .row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0;border-bottom:1px solid #E9E3D3;font-size:16px}
+  .row:last-of-type{border-bottom:none}
+  .row .save{color:var(--gold);font-weight:500}
+  .row .pill{background:#141414;color:var(--cream);padding:4px 14px;border-radius:999px;font-size:14px}
+  .fine{margin-top:16px;font-size:13.5px;color:var(--faint)}
+
+  footer{border-top:1px solid var(--line);padding:32px 0 48px;margin-top:24px;
+    font-size:13px;color:var(--faint);text-align:center;letter-spacing:.05em}
+  @media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="index.html">GROVE</a>
+    <nav aria-label="Primary">
+      <a href="index.html">HOME</a>
+      <a href="philosophy.html">PHILOSOPHY</a>
+      <a href="index.html#sport">SHOP BY SPORT</a>
+      <a href="prep-programs.html" style="opacity:1;border-bottom:1px solid #8B7332;padding-bottom:2px">PREP PROGRAMS</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">PREP PROGRAMS</p>
+    <h1>Train with a plan.<span class="voice">Supplement with one too.</span></h1>
+    <p>Every Grove stack comes in two tiers, built for one sport, and runs as a 6, 10 or 12-week block delivered every 4 weeks. The longer the block, the deeper the saving.</p>
+  </section>
+
+  <div class="tabs" role="tablist" aria-label="Choose your sport">
+    <button class="tab" role="tab" aria-selected="true" data-sport="hyrox">HYROX</button>
+    <button class="tab" role="tab" aria-selected="false" data-sport="bodybuilding">BODYBUILDING</button>
+    <button class="tab" role="tab" aria-selected="false" data-sport="recovery">RECOVERY</button>
+  </div>
+
+  <section class="sport active" id="hyrox" role="tabpanel">
+    <div class="tiers">
+      <div class="tier">
+        <p class="label">ESSENTIALS</p>
+        <p class="price">$199 <s>$237</s></p>
+        <ul>
+          <li>Hydration Pro electrolytes</li>
+          <li>Creatine Monohydrate 250g</li>
+          <li>Pre Shred pre-workout</li>
+          <li>100% Whey Protein 908g</li>
+        </ul>
+        <a class="buy" href="https://grove-9875.myshopify.com/cart/48792579997928:1">ADD ESSENTIALS — $199</a>
+      </div>
+      <div class="tier featured">
+        <p class="label">PRO · MOST POPULAR</p>
+        <p class="price">$239 <s>$289</s></p>
+        <ul>
+          <li>Everything in Essentials</li>
+          <li>Collagen+ for joints and tendons</li>
+          <li class="soon">Race-day Carb Fuel — coming soon</li>
+          <li class="soon">Magnesium / Sleep — coming soon</li>
+        </ul>
+        <a class="buy" href="https://grove-9875.myshopify.com/cart/48792580161768:1">ADD PRO — $239</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sport" id="bodybuilding" role="tabpanel">
+    <div class="tiers">
+      <div class="tier">
+        <p class="label">ESSENTIALS</p>
+        <p class="price">$165 <s>$195</s></p>
+        <ul>
+          <li>100% Whey Protein 908g</li>
+          <li>Creatine Monohydrate 250g</li>
+          <li>Pre Shred pre-workout</li>
+        </ul>
+        <a class="buy" href="https://grove-9875.myshopify.com/cart/48792580653288:1">ADD ESSENTIALS — $165</a>
+      </div>
+      <div class="tier featured">
+        <p class="label">PRO · MOST POPULAR</p>
+        <p class="price">$245 <s>$294</s></p>
+        <ul>
+          <li>Everything in Essentials</li>
+          <li>Test+ natural testosterone support</li>
+          <li>Ashwagandha KSM-66</li>
+          <li class="soon">EAA / Intra Aminos — coming soon</li>
+        </ul>
+        <a class="buy" href="https://grove-9875.myshopify.com/cart/48792582291688:1">ADD PRO — $245</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sport" id="recovery" role="tabpanel">
+    <div class="tiers">
+      <div class="tier">
+        <p class="label">ESSENTIALS</p>
+        <p class="price">$155 <s>$180</s></p>
+        <ul>
+          <li>NAC antioxidant support</li>
+          <li>Sea Moss — 92 trace minerals</li>
+          <li>Shilajit</li>
+          <li>Collagen+</li>
+        </ul>
+        <a class="buy" href="https://grove-9875.myshopify.com/cart/48792582357224:1">ADD ESSENTIALS — $155</a>
+      </div>
+      <div class="tier featured">
+        <p class="label">PRO · MOST POPULAR</p>
+        <p class="price">$215 <s>$256</s></p>
+        <ul>
+          <li>Everything in Essentials</li>
+          <li>NMN cellular energy support</li>
+          <li class="soon">Magnesium / Sleep — coming soon</li>
+        </ul>
+        <a class="buy" href="https://grove-9875.myshopify.com/cart/48792583012584:1">ADD PRO — $215</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="programs">
+    <h2>CHOOSE YOUR BLOCK</h2>
+    <p class="voice">Commit to the block, keep the saving.</p>
+    <div class="row"><span>One-off purchase</span><span class="save">Bundle price above</span></div>
+    <div class="row"><span>Every 6 weeks — lighter block</span><span class="save">15% off each delivery</span></div>
+    <div class="row"><span>Every 4 weeks — full prep program</span><span class="pill">20% off each delivery</span></div>
+    <p class="fine">Subscriptions activate at checkout on each bundle page. Pause or cancel anytime. 12-week blocks ship free.</p>
+    <!--
+      DEV NOTE — subscriptions:
+      Once the "Prep Program" selling plan exists in the Shopify Subscriptions app,
+      append ?selling_plan=SELLING_PLAN_ID to each .buy cart permalink to make the
+      button add the subscription version, e.g.
+      https://grove-9875.myshopify.com/cart/48792580161768:1?selling_plan=XXXXXXXX
+      Get IDs: Admin GraphQL query { sellingPlanGroups(first:5){edges{node{sellingPlans(first:5){edges{node{id name}}}}}} }
+    -->
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">GROVE — Australian made, transparently labelled. Nothing hidden. Everything dosed.</div>
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.sport');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.setAttribute('aria-selected', 'false'));
+    panels.forEach(p => p.classList.remove('active'));
+    t.setAttribute('aria-selected', 'true');
+    document.getElementById(t.dataset.sport).classList.add('active');
+  }));
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+:root{
+  --cream:#F2EDE3; --card:#FBF8F1; --ink:#1B1B1B; --gold:#8B7332;
+  --muted:#55503F; --faint:#9A9077; --line:#D8D0BF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.voice{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;color:var(--gold)}
+
+header{background:#141414;padding:18px 0;position:sticky;top:0;z-index:50}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.wordmark{color:var(--cream);letter-spacing:.5em;font-weight:500;font-size:17px;white-space:nowrap}
+header nav{display:flex;flex-wrap:wrap;gap:4px 22px;justify-content:flex-end}
+header nav a{color:var(--cream);font-size:12.5px;letter-spacing:.15em;opacity:.8}
+header nav a:hover,header nav a.active{opacity:1}
+header nav a.active{border-bottom:1px solid var(--gold);padding-bottom:2px}
+
+.hero{padding:88px 0 48px;text-align:left}
+.eyebrow{font-size:12px;letter-spacing:.3em;color:var(--gold);margin-bottom:16px}
+h1{font-size:clamp(34px,5.5vw,58px);font-weight:600;line-height:1.1;text-transform:uppercase}
+.hero .voice{font-size:clamp(26px,4.2vw,42px);display:block;text-transform:none;margin-top:6px}
+.lede{max-width:600px;margin-top:22px;color:var(--muted);font-size:17.5px}
+.sig{margin-top:26px;font-size:15px;letter-spacing:.3em;font-weight:600}
+
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-block;text-align:center;background:#141414;color:var(--cream);padding:15px 26px;
+  border-radius:8px;font-size:13px;letter-spacing:.18em;transition:opacity .15s}
+.btn:hover{opacity:.85}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--faint)}
+
+section.block{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(22px,3vw,30px);font-weight:600;text-transform:uppercase;line-height:1.25}
+.kicker{font-size:11.5px;letter-spacing:.3em;color:var(--gold);margin-bottom:12px}
+.block .voice{font-size:21px;margin-top:8px;display:block}
+.body{max-width:640px;margin-top:18px;color:var(--muted);font-size:16.5px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:30px}
+.cell{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px 22px}
+.cell h3{font-size:12.5px;letter-spacing:.26em;color:var(--gold);font-weight:600;margin-bottom:10px;text-transform:uppercase}
+.cell p{font-size:15px;color:var(--muted)}
+.cell.wide{grid-column:1/-1}
+
+.stack-link{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  padding:20px 4px;border-bottom:1px solid var(--line);font-size:17px}
+.stack-link:first-of-type{border-top:1px solid var(--line);margin-top:26px}
+.stack-link .why{font-size:14.5px;color:var(--faint);font-family:'Cormorant Garamond',serif;font-style:italic}
+.stack-link:hover{background:var(--card)}
+
+.rows{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 22px;margin-top:26px;max-width:640px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0;
+  border-bottom:1px solid #E9E3D3;font-size:15.5px}
+.row:last-child{border-bottom:none}
+.row .save{color:var(--gold);font-weight:500;text-align:right}
+.row .pill{background:#141414;color:var(--cream);padding:4px 14px;border-radius:999px;font-size:13.5px;white-space:nowrap}
+.fine{margin-top:14px;font-size:13.5px;color:var(--faint);max-width:640px}
+
+.story{background:#141414;color:var(--cream)}
+.story .kicker{color:var(--gold)}
+.story .body{color:#C9C2B2}
+.story .voice{color:var(--gold)}
+.story strong{color:var(--cream)}
+
+.close-block{text-align:center;padding:88px 0}
+.close-block h2{font-size:clamp(24px,3.6vw,36px)}
+.close-block .voice{font-size:20px;margin-top:10px}
+.close-block .sig{letter-spacing:.34em}
+
+footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:13px;color:var(--faint);
+  text-align:center;letter-spacing:.05em}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
